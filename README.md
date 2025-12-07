@@ -2,6 +2,13 @@
 
 Create mood-based music mixes using **AI**, upload your own tracks, and play everything directly in the browser!
 
+
+## 🚀 Live Demo
+🔗 **Live App:** https://music-mood-dj-1.onrender.com/
+
+### 🏠 Home Page
+![App Screenshot](/Music.png)
+
 ---
 
 ## 🌟 Features Overview
