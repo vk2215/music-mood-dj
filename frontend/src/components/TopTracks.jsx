@@ -6,14 +6,14 @@ function makePublicUrl(track) {
   if (track.url) {
     return track.url.startsWith("http")
       ? track.url
-      : `http://localhost:5000/${track.url.replace(/^\/+/, "")}`;
+      : `https://music-mood-dj-s6lm.onrender.com/${track.url.replace(/^\/+/, "")}`;
   }
   if (track.filepath) {
     return track.filepath.startsWith("http")
       ? track.filepath
-      : `http://localhost:5000/${track.filepath.replace(/^\/+/, "")}`;
+      : `https://music-mood-dj-s6lm.onrender.com/${track.filepath.replace(/^\/+/, "")}`;
   }
-  if (track.filename) return `http://localhost:5000/uploads/${track.filename}`;
+  if (track.filename) return `https://music-mood-dj-s6lm.onrender.com/uploads/${track.filename}`;
   return "";
 }
 
@@ -30,7 +30,7 @@ export default function TopTracks() {
   async function fetchTopTracks() {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/stats/top-tracks");
+      const res = await fetch("https://music-mood-dj-s6lm.onrender.com/api/stats/top-tracks");
       const data = await res.json();
       if (!res.ok) {
         setError(data.error || "Failed to fetch top tracks");
