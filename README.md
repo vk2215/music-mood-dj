@@ -1,44 +1,54 @@
-# 🎵 Music Mood DJ
+# 🎵✨ Music Mood DJ — AI Powered Playlist Generator
 
-A simple AI-powered music mixer where users upload songs, enter a mood prompt, and get an auto-generated playlist.
+Create mood-based music mixes using **AI**, upload your own tracks, and play everything directly in the browser!
 
-## Features
-- Upload MP3/WAV files
-- List & play tracks in browser
-- Mood prompt → LLM generates 3–6 track playlist
-- Playlist saved in DB + updates track usage count
-- `/stats/top-tracks` shows most-used tracks (cached with Redis or TTL)
+---
 
-## Tech Stack
-Node.js + Express, MongoDB/PostgreSQL, Redis, OpenAI API, React frontend, Vercel deploy.
+## 🌟 Features Overview
+- 🎧 Upload **MP3/WAV** files  
+- 📃 List & stream uploaded tracks  
+- 🤖 Enter a **mood prompt** → AI generates a 3–6 track playlist  
+- 🗂️ Playlists saved in DB  
+- 🔢 Tracks automatically get **usage counts**  
+- 🚀 `/stats/top-tracks` returns most-used tracks with **Redis / TTL caching**  
+- 🖥️ Simple React UI for upload → mix generation → playback → top tracks  
 
-## API
-POST /tracks/upload — upload audio  
-GET /tracks — list tracks  
-GET /tracks/:id/stream — audio playback  
-POST /mix/generate — mood → playlist  
-GET /playlists/:id — get playlist  
-GET /stats/top-tracks — top tracks (cached)
+---
 
-## Env Variables
-PORT=3000  
-MONGODB_URI=... / DATABASE_URL=...  
-REDIS_URL=...  
-OPENAI_API_KEY=...  
-UPLOAD_DIR=./uploads
+## 🧱 Tech Stack
+- **Backend:** Node.js + Express  
+- **Database:** MongoDB / PostgreSQL  
+- **Cache:** Redis (or fallback to in-memory TTL)  
+- **AI:** OpenAI API  
+- **Frontend:** React + Tailwind  
+- **Deployment:** Vercel  
 
-## Run Locally
-npm install  
-cp .env.example .env  
-mkdir uploads  
-npm run dev  
-cd frontend && npm install && npm run dev
+---
 
-## Deployment (Vercel)
-- Frontend in /frontend  
-- Backend in /api or serverless handlers  
-- Use external storage (S3) for audio  
-- Add env vars in Vercel dashboard
+## ⚙️ Setup (Local Development)
+1. 📥 Clone the repo  
+   `git clone <repo-url>`
 
-## Demo Flow
-Upload → Enter mood → Generate playlist → Play tracks → View top tracks
+2. 📦 Install backend dependencies  
+   `npm install`
+
+3. 🗂️ Copy environment file  
+   `cp .env.example .env`
+
+4. 🎶 Create uploads folder  
+   `mkdir uploads`
+
+5. ▶️ Start backend  
+   `npm run dev`
+
+6. 💻 Start frontend  
+    `cd frontend
+    npm install
+    npm run dev`
+
+## 🎥 Demo Workflow
+1. Upload your songs  
+2. Type a mood: *“calm focus”, “romantic evening”*  
+3. AI generates a playlist  
+4. Play tracks directly  
+5. Check **Top Tracks** analytics  
