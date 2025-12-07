@@ -1,48 +1,44 @@
-# 🎵 Mood DJ — AI Music Mix Generator
+# 🎵 Music Mood DJ
 
-Mood DJ is an AI-powered music mixer where users can upload tracks, generate playlists based on mood prompts, and play mixes in the browser.
+A simple AI-powered music mixer where users upload songs, enter a mood prompt, and get an auto-generated playlist.
 
-## 🚀 Features
+## Features
 - Upload MP3/WAV files
-- Store metadata in MongoDB/PostgreSQL
-- Generate playlists using an LLM
-- Save mixes in DB
-- Track usage count of each track
-- Cached **/stats/top-tracks** API using Redis or in-memory TTL cache
-- Simple UI to upload, play, generate mixes, and view top tracks
+- List & play tracks in browser
+- Mood prompt → LLM generates 3–6 track playlist
+- Playlist saved in DB + updates track usage count
+- `/stats/top-tracks` shows most-used tracks (cached with Redis or TTL)
 
-## 📂 Tech Stack
-Backend: Node.js/Express, MongoDB/PostgreSQL, Redis (optional)
-AI: OpenAI API
-Frontend: React/Next.js
-Deployment: Vercel (frontend) + Render/Railway/Vercel (backend)
+## Tech Stack
+Node.js + Express, MongoDB/PostgreSQL, Redis, OpenAI API, React frontend, Vercel deploy.
 
-## 🏗️ Setup
-git clone <repo-url>
-cd mood-dj
-npm install
+## API
+POST /tracks/upload — upload audio  
+GET /tracks — list tracks  
+GET /tracks/:id/stream — audio playback  
+POST /mix/generate — mood → playlist  
+GET /playlists/:id — get playlist  
+GET /stats/top-tracks — top tracks (cached)
 
-## 🌐 Environment Variables
-DB_URL=your_db_url
-REDIS_URL=your_redis_url (optional)
-OPENAI_API_KEY=your_key
+## Env Variables
+PORT=3000  
+MONGODB_URI=... / DATABASE_URL=...  
+REDIS_URL=...  
+OPENAI_API_KEY=...  
+UPLOAD_DIR=./uploads
 
-## ▶️ Run Project
-npm run dev      # backend
-npm run start    # frontend
+## Run Locally
+npm install  
+cp .env.example .env  
+mkdir uploads  
+npm run dev  
+cd frontend && npm install && npm run dev
 
-## 📘 API Endpoints
-POST /upload           → upload audio
-GET /tracks            → list tracks
-POST /generate-mix     → generate playlist
-GET /stats/top-tracks  → cached top tracks
+## Deployment (Vercel)
+- Frontend in /frontend  
+- Backend in /api or serverless handlers  
+- Use external storage (S3) for audio  
+- Add env vars in Vercel dashboard
 
-## 🎥 Demo Steps
-1. Upload audio
-2. Enter mood prompt
-3. Generate AI mix
-4. Play playlist
-5. Show Top Tracks
-
-## 📄 License
-MIT
+## Demo Flow
+Upload → Enter mood → Generate playlist → Play tracks → View top tracks
