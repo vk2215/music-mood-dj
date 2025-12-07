@@ -4,14 +4,14 @@ import api from "../api/api";
 function makePublicUrl(track) {
   if (track.url) {
     if (track.url.startsWith("http")) return track.url;
-    return `http://localhost:5000/${track.url.replace(/^\/+/, "")}`;
+    return `https://music-mood-dj-s6lm.onrender.com/${track.url.replace(/^\/+/, "")}`;
   }
   if (track.filepath) {
     if (track.filepath.startsWith("http")) return track.filepath;
-    return `http://localhost:5000/${track.filepath.replace(/^\/+/, "")}`;
+    return `https://music-mood-dj-s6lm.onrender.com/${track.filepath.replace(/^\/+/, "")}`;
   }
   if (track.filename) {
-    return `http://localhost:5000/uploads/${track.filename}`;
+    return `https://music-mood-dj-s6lm.onrender.com/uploads/${track.filename}`;
   }
   return "";
 }
